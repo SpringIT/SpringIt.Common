@@ -22,8 +22,8 @@
 			<dependency id="MassTransit.RabbitMQ" version="3.0.15" />
 			<dependency id="RabbitMQ.Client" version="3.5.6" />
 			<dependency id="NLog" version="4.1.2" />
-			<dependency id="Topshelf" version="3.2.0" />
-			<dependency id="Topshelf.NLog" version="3.2.0" />	  
+			<dependency id="Topshelf" version="4.0.1" />
+			<dependency id="Topshelf.NLog" version="4.0.1" />	  
 		</dependencies>
 	</metadata>
 	<files>
