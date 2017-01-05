@@ -19,8 +19,8 @@ namespace SpringIt.ServiceBus
                 var serviceName = a.GetName().Name;
                 var serviceDescription = string.Format("{0} MassTransit service", serviceName);
 
-                c.BeforeInstall(() => Console.WriteLine("Topshelf install {0}", serviceName));
-                c.BeforeUninstall(() => Console.WriteLine("Topshelf uninstall {0}", serviceName));
+                c.BeforeInstall(() => Console.WriteLine("[TOPSHELF] install {0}", serviceName));
+                c.BeforeUninstall(() => Console.WriteLine("[TOPSHELF] uninstall {0}", serviceName));
 
                 c.SetDisplayName(serviceName);
                 c.SetServiceName(serviceName);

@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringIt.ServiceBus.Autofac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringIt.ServiceBus.Common", "ServiceBus\SpringIt.ServiceBus.Common\SpringIt.ServiceBus.Common.csproj", "{DB588BB9-9620-449A-B9CE-45316640EDDB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{73382644-0D80-4879-8D5D-A1DA85C2D57B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringIt.ServiceBus.SimpleInjector.Endpoint", "SpringIt.ServiceBus.SimpleInjector.Endpoint\SpringIt.ServiceBus.SimpleInjector.Endpoint.csproj", "{64F7F799-57B4-4340-A6EA-BE02EB406D42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,10 @@ Global
 		{DB588BB9-9620-449A-B9CE-45316640EDDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB588BB9-9620-449A-B9CE-45316640EDDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB588BB9-9620-449A-B9CE-45316640EDDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64F7F799-57B4-4340-A6EA-BE02EB406D42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64F7F799-57B4-4340-A6EA-BE02EB406D42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64F7F799-57B4-4340-A6EA-BE02EB406D42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64F7F799-57B4-4340-A6EA-BE02EB406D42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,5 +61,6 @@ Global
 		{F4F7AEC5-9D5B-4443-ABF5-3D132BF10CDE} = {2ECF5166-5239-4CD1-9A65-7D607028EAA2}
 		{23C90147-BB80-4528-B255-A771DBCF8A68} = {2ECF5166-5239-4CD1-9A65-7D607028EAA2}
 		{DB588BB9-9620-449A-B9CE-45316640EDDB} = {2ECF5166-5239-4CD1-9A65-7D607028EAA2}
+		{64F7F799-57B4-4340-A6EA-BE02EB406D42} = {73382644-0D80-4879-8D5D-A1DA85C2D57B}
 	EndGlobalSection
 EndGlobal

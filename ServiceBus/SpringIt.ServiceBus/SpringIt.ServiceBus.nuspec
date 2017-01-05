@@ -18,8 +18,8 @@
 			<dependency id="SpringIt.ServiceBus.Common" version="$version$" />
 			<dependency id="Common.Logging" version="3.3.1" />
 			<dependency id="Common.Logging.NLog41" version="3.3.1" />
-			<dependency id="MassTransit" version="3.0.15" />
-			<dependency id="MassTransit.RabbitMQ" version="3.0.15" />
+			<dependency id="MassTransit" version="3.0.16" />
+			<dependency id="MassTransit.RabbitMQ" version="3.0.16" />
 			<dependency id="RabbitMQ.Client" version="3.5.6" />
 			<dependency id="NLog" version="4.1.2" />
 			<dependency id="Topshelf" version="4.0.1" />

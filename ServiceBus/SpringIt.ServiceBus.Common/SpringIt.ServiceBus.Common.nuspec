@@ -13,8 +13,8 @@
 	<dependencies>
 		<dependency id="SpringIt.ConfigReader" version="$version$" />
 		<dependency id="Common.Logging" version="3.3.1" />
-		<dependency id="MassTransit" version="3.0.15" />
-		<dependency id="MassTransit.RabbitMQ" version="3.0.15" />
+		<dependency id="MassTransit" version="3.0.16" />
+		<dependency id="MassTransit.RabbitMQ" version="3.0.16" />
 		<dependency id="RabbitMQ.Client" version="3.5.6" />
 	</dependencies>
   </metadata>

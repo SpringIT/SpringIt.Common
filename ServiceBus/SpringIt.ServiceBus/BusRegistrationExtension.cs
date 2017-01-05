@@ -8,17 +8,17 @@ namespace SpringIt.ServiceBus
 {
     public static class BusRegistrationExtension
     {
-        public static EndpointConfigurator ApplyBus(this EndpointConfigurator endpointConfigurator, Action<IBusControl> registerBus, Action<IRabbitMqReceiveEndpointConfigurator> configuration, Func<IQueueHelper> queueHelperFactory)
+        public static EndpointConfigurator ApplyBus(this EndpointConfigurator endpointConfigurator, Action<IBusControl> registerBus, Action<IReceiveEndpointConfigurator> configuration, Func<IQueueHelper> queueHelperFactory)
         {
-            var busFactory = BusFactory(configuration, queueHelperFactory);
-            registerBus(busFactory);
+            var bus = BusFactory(configuration, queueHelperFactory);
+            registerBus(bus);
 
             return endpointConfigurator;
         }
 
         public static EndpointConfigurator ApplyBus(this EndpointConfigurator endpointConfigurator, Action<IBusControl> registerBus, Func<IQueueHelper> queueHelperFactory)
         {
-            Action<IRabbitMqReceiveEndpointConfigurator> defaultConfiguration = delegate (IRabbitMqReceiveEndpointConfigurator configurator)
+            Action<IReceiveEndpointConfigurator> defaultConfiguration = delegate (IReceiveEndpointConfigurator configurator)
             {
                 configurator.UseRetry(new ExponentialRetryPolicy(new AllPolicyExceptionFilter(), 3, TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(30), TimeSpan.FromSeconds(10)));
             };
@@ -26,7 +26,7 @@ namespace SpringIt.ServiceBus
             return endpointConfigurator.ApplyBus(registerBus, defaultConfiguration, queueHelperFactory);
         }
 
-        private static IBusControl BusFactory(Action<IRabbitMqReceiveEndpointConfigurator> configuration, Func<IQueueHelper> queueHelperFactory)
+        public static IBusControl BusFactory(Action<IReceiveEndpointConfigurator> configuration, Func<IQueueHelper> queueHelperFactory)
         {
         
                 var queueHelper = queueHelperFactory();
