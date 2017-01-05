@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>SpringIt.ServiceBus.Common</id>
+    <title>SpringIt.ServiceBus.Common</title>
+    <description>Spring IT Service bus implementation</description>
+    <version>$version$</version>
+    <authors>Spring IT Solutions B.V.</authors>
+    <owners>Spring IT Solutions B.V.</owners>
+    <licenseUrl>http://www.spring-it.nl</licenseUrl>
+    <projectUrl>http://www.spring-it.nl</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<dependencies>
+		<dependency id="SpringIt.ConfigReader" version="$version$" />
+		<dependency id="Common.Logging" version="3.3.1" />
+		<dependency id="MassTransit" version="3.0.15" />
+		<dependency id="MassTransit.RabbitMQ" version="3.0.15" />
+		<dependency id="RabbitMQ.Client" version="3.5.6" />
+	</dependencies>
+  </metadata>
+  <files>
+	<file src="bin\$configuration$\SpringIt.ServiceBus.Common.dll" target="lib" />
+	<file src="bin\$configuration$\SpringIt.ServiceBus.Common.pdb" target="lib" />
+  </files>
+</package>

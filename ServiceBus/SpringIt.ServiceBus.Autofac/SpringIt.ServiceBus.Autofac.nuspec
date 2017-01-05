@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata>
+		<id>SpringIt.ServiceBus.Autofac</id>
+		<title>SpringIt.ServiceBus.Autofac</title>
+		<description>Spring IT Autofac Service bus implementation</description>
+		<version>$version$</version>
+		<authors>Spring IT Solutions B.V.</authors>
+		<owners>Spring IT Solutions B.V.</owners>
+		<licenseUrl>http://www.spring-it.nl</licenseUrl>
+		<projectUrl>http://www.spring-it.nl</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<releaseNotes>-</releaseNotes>
+		<copyright></copyright>
+		<tags>MassTransit, Topshelf, RabbitMQ, ServiceBus, Autofac</tags>
+		<dependencies>
+			<dependency id="SpringIt.ServiceBus" version="$version$" />
+			<dependency id="Topshelf.Autofac" version="3.1.0" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="bin\$configuration$\SpringIt.ServiceBus.Autofac.dll" target="lib" />
+		<file src="bin\$configuration$\SpringIt.ServiceBus.Autofac.pdb" target="lib" />
+	</files>
+</package>
