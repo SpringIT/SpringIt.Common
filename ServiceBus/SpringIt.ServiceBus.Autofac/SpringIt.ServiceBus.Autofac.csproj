@@ -72,11 +72,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\commonlibary\ServiceBus\SpringIt.ServiceBus.Common\SpringIt.ServiceBus.Common.csproj">
+    <ProjectReference Include="..\SpringIt.ServiceBus.Common\SpringIt.ServiceBus.Common.csproj">
       <Project>{DB588BB9-9620-449A-B9CE-45316640EDDB}</Project>
       <Name>SpringIt.ServiceBus.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\commonlibary\ServiceBus\SpringIt.ServiceBus\SpringIt.ServiceBus.csproj">
+    <ProjectReference Include="..\SpringIt.ServiceBus\SpringIt.ServiceBus.csproj">
       <Project>{1AADC2A8-E359-43E7-B5EA-454F3672B02A}</Project>
       <Name>SpringIt.ServiceBus</Name>
     </ProjectReference>
