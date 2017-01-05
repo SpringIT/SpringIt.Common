@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringIt.ConfigReader", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringIt.ServiceBus.SimpleInjector", "ServiceBus\SpringIt.ServiceBus.SimpleInjector\SpringIt.ServiceBus.SimpleInjector.csproj", "{F4F7AEC5-9D5B-4443-ABF5-3D132BF10CDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringIt.ServiceBus.Autofac", "SpringIt.ServiceBus.Autofac\SpringIt.ServiceBus.Autofac.csproj", "{23C90147-BB80-4528-B255-A771DBCF8A68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringIt.ServiceBus.Autofac", "ServiceBus\SpringIt.ServiceBus.Autofac\SpringIt.ServiceBus.Autofac.csproj", "{23C90147-BB80-4528-B255-A771DBCF8A68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
