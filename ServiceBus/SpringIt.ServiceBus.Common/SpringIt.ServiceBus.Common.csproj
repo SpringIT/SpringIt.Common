@@ -87,9 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
     <None Include="SpringIt.ServiceBus.Common.nuspec" />
   </ItemGroup>
   <ItemGroup>
