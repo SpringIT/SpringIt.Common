@@ -14,9 +14,10 @@
 		<copyright></copyright>
 		<tags>MassTransit, Topshelf, RabbitMQ, ServiceBus, SimpleInjector</tags>
 		<dependencies>
-			<dependency id="SpringIt.ServiceBus" version="$version$" />
-			<dependency id="Topshelf.SimpleInjector" version="1.0.0.17" />
-		</dependencies>
+      <dependency id="Topshelf.SimpleInjector" version="1.0.0.17" />
+      <dependency id="MassTransit.SimpleInjector" version="3.0.16" />
+      <dependency id="SpringIt.ServiceBus" version="$version$" />
+    </dependencies>
 	</metadata>  
 	<files>
 		<file src="bin\$configuration$\SpringIt.ServiceBus.SimpleInjector.dll" target="lib" />
