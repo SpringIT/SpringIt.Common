@@ -15,13 +15,10 @@ namespace SpringIt.ServiceBus.SimpleInjector.Endpoint
 
             _container.Register<Test>();
 
-
             EndpointConfigurator
                 .With
-                .UseSimpleInjector(_container)
-                .ApplyTopshelf(c => c.UseSimpleInjector(_container), _container.GetInstance<IService>);
+                .UseSimpleInjector(_container);
 
-            
         }
     }
 

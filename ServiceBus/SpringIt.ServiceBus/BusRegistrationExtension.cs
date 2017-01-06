@@ -28,7 +28,6 @@ namespace SpringIt.ServiceBus
 
         public static IBusControl BusFactory(Action<IReceiveEndpointConfigurator> configuration, Func<IQueueHelper> queueHelperFactory)
         {
-        
                 var queueHelper = queueHelperFactory();
 
                 var bus = Bus.Factory.CreateUsingRabbitMq(busFactoryConfigurator =>

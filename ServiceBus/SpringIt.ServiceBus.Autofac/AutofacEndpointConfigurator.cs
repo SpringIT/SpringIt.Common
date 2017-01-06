@@ -8,7 +8,7 @@ namespace SpringIt.ServiceBus.Autofac
 {
     public static class AutofacEndpointConfigurator
     {
-        public static EndpointConfigurator UseSimpleInjector<TService>(this EndpointConfigurator endpointConfigurator, Container container) where TService : class, IService
+        public static EndpointConfigurator UseAutofac<TService>(this EndpointConfigurator endpointConfigurator, Container container) where TService : class, IService
         {
             return endpointConfigurator.ApplyTopshelf(configurator => configurator.UseAutofacContainer(container),
                 container.Resolve<TService>).ApplyBus(
