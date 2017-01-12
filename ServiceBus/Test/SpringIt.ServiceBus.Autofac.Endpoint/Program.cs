@@ -1,24 +1,20 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Autofac;
 using MassTransit;
-using SimpleInjector;
-using Topshelf.SimpleInjector;
 
-namespace SpringIt.ServiceBus.SimpleInjector.Endpoint
+namespace SpringIt.ServiceBus.Autofac.Endpoint
 {
     class Program
     {
-        private static Container _container;
+        private static IContainer _container;
         static void Main(string[] args)
         {
             _container = CompositionRoot.With.Configure();
 
-            _container.Register<Test>();
-
             EndpointConfigurator
                 .With
-                .UseSimpleInjector(_container);
-
+                .UseAutofac(_container);
         }
     }
 

@@ -1,0 +1,35 @@
+﻿using System;
+using System.Threading.Tasks;
+using MassTransit;
+using SimpleInjector;
+
+namespace SpringIt.ServiceBus.SimpleInjector.Endpoint
+{
+    class Program
+    {
+        private static Container _container;
+        static void Main(string[] args)
+        {
+            _container = CompositionRoot.With.Configure();
+            _container.Register<Test>(Lifestyle.Scoped);
+
+            EndpointConfigurator
+                .With
+                .UseSimpleInjector(_container);
+        }
+    }
+
+    class Test : IConsumer<Message>
+    {
+        public Task Consume(ConsumeContext<Message> context)
+        {
+            Console.WriteLine("message");
+
+            return Task.FromResult(0);
+        }
+    }
+
+    public class Message
+    {
+    }
+}
