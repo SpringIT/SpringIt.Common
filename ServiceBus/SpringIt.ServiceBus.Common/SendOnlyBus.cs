@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Common.Logging;
 using MassTransit;
+using MassTransit.Pipeline;
 using SpringIt.ServiceBus.Common.Utils;
 
 namespace SpringIt.ServiceBus.Common
@@ -14,7 +16,11 @@ namespace SpringIt.ServiceBus.Common
 
         private readonly ILog _log = LogManager.GetLogger<SendOnlyBus>();
 
-        public SendOnlyBus(IQueueHelper queueHelper)
+        public SendOnlyBus(IQueueHelper queueHelper) : this(queueHelper, new List<IPublishObserver>())
+        {
+        }
+
+        public SendOnlyBus(IQueueHelper queueHelper, IList<IPublishObserver> oberservers)
         {
             _bus = Bus.Factory.CreateUsingRabbitMq(c =>
             {
@@ -24,8 +30,11 @@ namespace SpringIt.ServiceBus.Common
                     h.Password(queueHelper.Password);
                 });
             });
-
             _bus.ConnectPublishObserver(new ServiceBusObserver());
+            foreach (var publishObserver in oberservers)
+            {
+                _bus.ConnectPublishObserver(publishObserver);
+            }
 
             _handle = _bus.Start();
 

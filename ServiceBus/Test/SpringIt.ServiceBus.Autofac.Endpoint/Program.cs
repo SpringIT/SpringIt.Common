@@ -15,7 +15,6 @@ namespace SpringIt.ServiceBus.Autofac.Endpoint
             EndpointConfigurator
                 .With
                 .UseAutofac(_container);
-
         }
     }
 
