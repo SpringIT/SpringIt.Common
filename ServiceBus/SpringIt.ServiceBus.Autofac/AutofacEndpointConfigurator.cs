@@ -9,12 +9,17 @@ namespace SpringIt.ServiceBus.Autofac
     public static class AutofacEndpointConfigurator
     {
         public static EndpointConfigurator UseAutofac(this EndpointConfigurator endpointConfigurator,
-            IContainer container, Action<IReceiveEndpointConfigurator> configuratorAction)
+            IContainer container, Action<IBus> configureBus, Action<IReceiveEndpointConfigurator> configureEndpoint)
         {
             Func<IService> serviceFactory = container.Resolve<IService>;
             Func<IQueueHelper> queueHelperFactory = container.Resolve<IQueueHelper>;
             Func<IBusControl> instanceCreator =
-                () => BusRegistrationExtension.BusFactory(configuratorAction, queueHelperFactory);
+                () =>
+                {
+                    var bus = BusRegistrationExtension.BusFactory(configureEndpoint, queueHelperFactory);
+                    configureBus(bus);
+                    return bus;
+                };
 
             var updateBuilder = new ContainerBuilder();
             updateBuilder.Register(c => instanceCreator()).As<IBus>().As<IBusControl>().SingleInstance();
@@ -29,7 +34,7 @@ namespace SpringIt.ServiceBus.Autofac
         public static EndpointConfigurator UseAutofac(this EndpointConfigurator endpointConfigurator,
             IContainer container)
         {
-            endpointConfigurator.UseAutofac(container, configurator => configurator.LoadFrom(container));
+            endpointConfigurator.UseAutofac(container, bus => { }, configurator => configurator.LoadFrom(container));
             return endpointConfigurator;
         }
     }
