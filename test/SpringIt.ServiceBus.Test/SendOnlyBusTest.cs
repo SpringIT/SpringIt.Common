@@ -14,7 +14,7 @@ namespace SpringIt.ServiceBus.Test
     [TestFixture]
     public class SendOnlyBusTest
     {
-        private SendOnlyBus _sendOnlyBus;
+        private ISendOnlyBus _sendOnlyBus;
         private Mock<IBusControl> _bus;
         private Mock<BusHandle> _handle;
 
@@ -35,11 +35,9 @@ namespace SpringIt.ServiceBus.Test
 
             await _sendOnlyBus.Publish(new object { });
 
-            _sendOnlyBus.Dispose();
 
             _bus.Verify(control => control.Start(),Times.Once);
             _bus.Verify(control => control.Publish(It.IsAny<object>(), CancellationToken.None),Times.Once);
-            _handle.Verify(h => h.Dispose(),Times.Once);
         }
     }
 }
