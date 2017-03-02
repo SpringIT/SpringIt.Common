@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Common.Logging;
 using MassTransit;
-using MassTransit.Pipeline;
-using SpringIt.ServiceBus.Common.Utils;
 
 namespace SpringIt.ServiceBus.Common
 {
