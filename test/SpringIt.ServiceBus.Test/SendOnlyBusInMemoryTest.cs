@@ -20,6 +20,10 @@ namespace SpringIt.ServiceBus.Test
         private SendOnlyBus _sendOnlyBus;
         private bool _messageProcessed = false;
 
+        private class Blup
+        {
+        }
+
         private class QH : IQueueHelper
         {
             public Uri Host { get; }
@@ -63,7 +67,5 @@ namespace SpringIt.ServiceBus.Test
         }
     }
 
-    public class Blup
-    {
-    }
+   
 }
