@@ -8,7 +8,7 @@ namespace SpringIt.ServiceBus
 {
     public static class TopselfExtension
     {
-        public static EndpointConfigurator ApplyTopshelf<TService>(this EndpointConfigurator configurator, Action<HostConfigurator> configureCallback, Func<TService> serviceFactory) where TService : class, IService
+        public static EndpointConfigurator RunTopshelf<TService>(this EndpointConfigurator configurator, Action<HostConfigurator> configureCallback, Func<TService> serviceFactory) where TService : class, IService
         {
             HostFactory.Run(c =>
             {
@@ -39,7 +39,6 @@ namespace SpringIt.ServiceBus
                         logger.InfoFormat("Starting {0}", serviceName);
                         service.Start();
                         logger.InfoFormat("Started {0}", serviceName);
-
                     });
 
                     s.WhenStopped(service =>

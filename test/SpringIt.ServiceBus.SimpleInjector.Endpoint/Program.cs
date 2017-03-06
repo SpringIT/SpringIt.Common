@@ -13,7 +13,7 @@ namespace SpringIt.ServiceBus.SimpleInjector.Endpoint
 
             EndpointConfigurator
                 .With
-                .UseSimpleInjector(_container, factory =>
+                .Run(_container, factory =>
                 {
                     return factory.CreateInMemoryBus(configurator =>
                         {

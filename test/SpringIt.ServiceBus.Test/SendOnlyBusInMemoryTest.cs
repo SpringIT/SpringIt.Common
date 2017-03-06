@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using MassTransit;
+using MassTransit.Util;
 using Moq;
 using NUnit.Framework;
 using SpringIt.ServiceBus.Common;
@@ -46,7 +47,7 @@ namespace SpringIt.ServiceBus.Test
                     configurator.Handler<Blup>(context =>
                     {
                         _messageProcessed = true;
-                        return Task.FromResult(0);
+                        return TaskUtil.Completed;
                     });
                 });
 

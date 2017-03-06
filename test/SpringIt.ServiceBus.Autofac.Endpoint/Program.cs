@@ -12,7 +12,7 @@ namespace SpringIt.ServiceBus.Autofac.Endpoint
 
             EndpointConfigurator
                 .With
-                .UseAutofac(_container, factory =>
+                .Run(_container, factory =>
                 {
                     return factory.CreateInMemoryBus(configurator =>
                         {
