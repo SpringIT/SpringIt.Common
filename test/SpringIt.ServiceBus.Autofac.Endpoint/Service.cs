@@ -19,9 +19,9 @@ namespace SpringIt.ServiceBus.Autofac.Endpoint
             await _busControl.Publish(new Message());
         }
 
-        public void Stop()
+        public async Task Stop()
         {
-            _handle.Stop();
+            await _handle.StopAsync();
         }
     }
 }

@@ -5,6 +5,6 @@ namespace SpringIt.ServiceBus
     public interface IService
     {
         Task Start();
-        void Stop();
+        Task Stop();
     }
 }
