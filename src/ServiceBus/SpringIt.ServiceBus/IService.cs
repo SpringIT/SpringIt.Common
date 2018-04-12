@@ -1,8 +1,10 @@
+using System.Threading.Tasks;
+
 namespace SpringIt.ServiceBus
 {
     public interface IService
     {
-        void Start();
-        void Stop();
+        Task Start();
+        Task Stop();
     }
 }

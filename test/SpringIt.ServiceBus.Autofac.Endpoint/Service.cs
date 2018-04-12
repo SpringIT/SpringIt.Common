@@ -1,4 +1,5 @@
-﻿using MassTransit;
+﻿using System.Threading.Tasks;
+using MassTransit;
 
 namespace SpringIt.ServiceBus.Autofac.Endpoint
 {
@@ -12,16 +13,15 @@ namespace SpringIt.ServiceBus.Autofac.Endpoint
             _busControl = busControl;
         }
 
-        public void Start()
+        public async Task Start()
         {
-            _handle = _busControl.Start();
-
-            _busControl.Publish(new Message()).Wait();
+            _handle = await _busControl.StartAsync();
+            await _busControl.Publish(new Message());
         }
 
-        public void Stop()
+        public async Task Stop()
         {
-            _handle.Stop();
+            await _handle.StopAsync();
         }
     }
 }

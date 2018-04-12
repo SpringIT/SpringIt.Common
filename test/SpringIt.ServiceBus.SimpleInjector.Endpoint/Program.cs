@@ -1,4 +1,5 @@
-﻿using MassTransit.SimpleInjectorIntegration;
+﻿using MassTransit;
+using MassTransit.SimpleInjectorIntegration;
 using SimpleInjector;
 
 namespace SpringIt.ServiceBus.SimpleInjector.Endpoint
@@ -9,7 +10,7 @@ namespace SpringIt.ServiceBus.SimpleInjector.Endpoint
         static void Main(string[] args)
         {
             _container = CompositionRoot.With.Configure();
-            _container.Register<MessageConsumer>(Lifestyle.Scoped);
+            _container.Register<MessageConsumer>();
 
             EndpointConfigurator
                 .With
@@ -17,7 +18,7 @@ namespace SpringIt.ServiceBus.SimpleInjector.Endpoint
                 {
                     return factory.CreateInMemoryBus(configurator =>
                         {
-
+                            //no config steps
                         }, configurator =>
                         {
                             configurator.LoadFrom(_container);

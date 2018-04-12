@@ -1,5 +1,6 @@
 using System;
 using MassTransit;
+using MassTransit.RabbitMqTransport;
 
 namespace SpringIt.ServiceBus
 {

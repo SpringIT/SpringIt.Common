@@ -17,10 +17,10 @@ namespace SpringIt.ServiceBus
 
                 var a = Assembly.GetEntryAssembly();
                 var serviceName = a.GetName().Name;
-                var serviceDescription = string.Format("{0} MassTransit service", serviceName);
+                var serviceDescription = $"A service hosting {serviceName}";
 
-                c.BeforeInstall(() => Console.WriteLine("[TOPSHELF] install {0}", serviceName));
-                c.BeforeUninstall(() => Console.WriteLine("[TOPSHELF] uninstall {0}", serviceName));
+                c.BeforeInstall(() => Console.WriteLine("[TOPSHELF] Install {0}", serviceName));
+                c.BeforeUninstall(() => Console.WriteLine("[TOPSHELF] Uninstall {0}", serviceName));
 
                 c.SetDisplayName(serviceName);
                 c.SetServiceName(serviceName);
@@ -34,20 +34,18 @@ namespace SpringIt.ServiceBus
                    
                     s.WhenStarted(service =>
                     {
-                        Console.WriteLine("[TOPSHELF]Starting {0}", serviceName);
                         var logger = LogManager.GetLogger(service.GetType());
-                        logger.InfoFormat("Starting {0}", serviceName);
-                        service.Start();
-                        logger.InfoFormat("Started {0}", serviceName);
+                        logger.InfoFormat("[TOPSHELF]  Starting {0}", serviceName);
+                        service.Start().Wait();
+                        logger.InfoFormat("[TOPSHELF] Started {0}", serviceName);
                     });
 
                     s.WhenStopped(service =>
                     {
-                        Console.WriteLine("[TOPSHELF]Stopping {0}", serviceName);
                         var logger = LogManager.GetLogger(service.GetType());
-                        logger.InfoFormat("Stopping {0}", serviceName);
-                        service.Stop();
-                        logger.InfoFormat("Stopped {0}", serviceName);
+                        logger.InfoFormat("[TOPSHELF] Stopping {0}", serviceName);
+                        service.Stop().Wait();
+                        logger.InfoFormat("[TOPSHELF] Stopped {0}", serviceName);
                     });
 
                     

@@ -18,8 +18,9 @@ namespace SpringIt.ServiceBus.Test
     [TestFixture]
     public class SendOnlyBusInMemoryTest
     {
-        private SendOnlyBus _sendOnlyBus;
         private bool _messageProcessed = false;
+        private IBusControl _busControl;
+        private QH _queueHelper;
 
         private class Blup
         {
@@ -27,7 +28,8 @@ namespace SpringIt.ServiceBus.Test
 
         private class QH : IQueueHelper
         {
-            public Uri Host { get; }
+            public Uri Host => new Uri($"loopback://localhost/{Endpoint}");
+
             public string Endpoint => "NEMO";
             public string Username { get; }
             public string Password { get; }
@@ -35,36 +37,36 @@ namespace SpringIt.ServiceBus.Test
         [SetUp]
         public void Setup()
         {
+            _queueHelper = new QH();
 
-            _sendOnlyBus = new SendOnlyBus(() =>
+            _busControl = Bus.Factory.CreateUsingInMemory(cfg =>
             {
-                Func<IQueueHelper> qh =()=> new QH();
-
-                var factory = new Factory(qh);
-
-                var bus = factory.CreateInMemoryBus(configurator => { }, configurator =>
+                cfg.ReceiveEndpoint(_queueHelper.Endpoint, ep =>
                 {
-                    configurator.Handler<Blup>(context =>
+                    ep.Handler<Blup>(context =>
                     {
                         _messageProcessed = true;
                         return TaskUtil.Completed;
                     });
                 });
-
-                return bus;
             });
+         
         }
 
         [Test]
         public async Task PublishAndDispose()
         {
+            var handle = await _busControl.StartAsync();
 
-            await _sendOnlyBus.Publish(new Blup {});
+            var endpoint = await _busControl.GetSendEndpoint(_queueHelper.Host);
+
+            await endpoint.Send(new Blup {});
 
             await Task.Delay(TimeSpan.FromSeconds(1));
 
             _messageProcessed.Should().BeTrue();
 
+            await handle.StopAsync();
         }
     }
 
