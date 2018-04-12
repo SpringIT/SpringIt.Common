@@ -39,6 +39,7 @@ namespace SpringIt.ServiceBus
                         logger.InfoFormat("Starting {0}", serviceName);
                         service.Start();
                         logger.InfoFormat("Started {0}", serviceName);
+                        service.Start().Wait();
                     });
 
                     s.WhenStopped(service =>
@@ -48,6 +49,7 @@ namespace SpringIt.ServiceBus
                         logger.InfoFormat("Stopping {0}", serviceName);
                         service.Stop();
                         logger.InfoFormat("Stopped {0}", serviceName);
+                        service.Stop().Wait();
                     });
 
                     
