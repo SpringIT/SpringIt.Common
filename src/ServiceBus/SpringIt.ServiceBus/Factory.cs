@@ -20,9 +20,9 @@ namespace SpringIt.ServiceBus
             return CreateRabbitMqBus(configurator => { }, configurator => { });
         }
 
-        public IBusControl CreateRabbitMqBus(Action<IRabbitMqBusFactoryConfigurator> configureBus)
+        public IBusControl CreateRabbitMqBus(Action<IRabbitMqBusFactoryConfigurator> busFactoryConfigurator)
         {
-            return CreateRabbitMqBus(configureBus, configurator => { });
+            return CreateRabbitMqBus(busFactoryConfigurator, configurator => { });
         }
 
         public IBusControl CreateRabbitMqBus(Action<IRabbitMqReceiveEndpointConfigurator> configureEndpoint)
@@ -30,9 +30,9 @@ namespace SpringIt.ServiceBus
             return CreateRabbitMqBus(configurator => { }, configureEndpoint);
         }
 
-        public IBusControl CreateRabbitMqBus(Action<IRabbitMqBusFactoryConfigurator> configureBus, Action<IRabbitMqReceiveEndpointConfigurator> configureEndpoint)
+        public IBusControl CreateRabbitMqBus(Action<IRabbitMqBusFactoryConfigurator> busFactoryConfigurator, Action<IRabbitMqReceiveEndpointConfigurator> receiveEndpointConfigurator)
         {
-            if (configureBus == null) throw new ArgumentNullException();
+            if (busFactoryConfigurator == null) throw new ArgumentNullException();
 
             return BusFactory.CreateUsingRabbitMq(configurator =>
             {
@@ -44,9 +44,9 @@ namespace SpringIt.ServiceBus
                     h.Password(queueHelper.Password);
                 });
 
-                configurator.ReceiveEndpoint(host, queueHelper.Endpoint, configureEndpoint.Invoke);
+                configurator.ReceiveEndpoint(host, queueHelper.Endpoint, receiveEndpointConfigurator.Invoke);
 
-                configureBus.Invoke(configurator);
+                busFactoryConfigurator.Invoke(configurator);
             });
         }
 
