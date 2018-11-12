@@ -47,7 +47,7 @@ namespace SpringIt.ServiceBus.Common
 
         public Task SendFault<T>(SendContext<T> context, Exception exception) where T : class
         {
-            return Task.Factory.StartNew(() => _log.FatalFormat("SendFault: Unable to process {0}", exception));
+            return Task.Factory.StartNew(() => _log.FatalFormat("SendFault: Unable to process {0}", exception, context.ContentType));
         }
 
         public Task PrePublish<T>(PublishContext<T> context) where T : class
