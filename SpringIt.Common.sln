@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2003
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{12DD40D7-8F15-4640-9330-A334D75DF0C8}"
 EndProject
@@ -21,9 +21,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringIt.ServiceBus.Autofac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringIt.ServiceBus.SimpleInjector.Endpoint", "test\SpringIt.ServiceBus.SimpleInjector.Endpoint\SpringIt.ServiceBus.SimpleInjector.Endpoint.csproj", "{64F7F799-57B4-4340-A6EA-BE02EB406D42}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestEndpoint", "TestEndpoint", "{ABAEE599-3F8E-4CDE-BEB9-4743564C1570}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringIt.ServiceBus.Test", "test\SpringIt.ServiceBus.Test\SpringIt.ServiceBus.Test.csproj", "{89B7FA76-87FF-4BFC-8618-5446BFAEF61A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringIt.ServiceBus.Tests", "test\SpringIt.ServiceBus.Tests\SpringIt.ServiceBus.Tests.csproj", "{89B7FA76-87FF-4BFC-8618-5446BFAEF61A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestEndpoint", "TestEndpoint", "{ABAEE599-3F8E-4CDE-BEB9-4743564C1570}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,8 +76,5 @@ Global
 		{85BF30D9-2EC8-48E5-900C-9DB9E87D28FB} = {ABAEE599-3F8E-4CDE-BEB9-4743564C1570}
 		{64F7F799-57B4-4340-A6EA-BE02EB406D42} = {ABAEE599-3F8E-4CDE-BEB9-4743564C1570}
 		{89B7FA76-87FF-4BFC-8618-5446BFAEF61A} = {12DD40D7-8F15-4640-9330-A334D75DF0C8}
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BBC07BE9-8DFF-408E-9E13-940E7574B0C3}
 	EndGlobalSection
 EndGlobal
