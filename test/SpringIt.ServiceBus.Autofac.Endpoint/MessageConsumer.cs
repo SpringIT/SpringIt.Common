@@ -4,7 +4,7 @@ using MassTransit;
 
 namespace SpringIt.ServiceBus.Autofac.Endpoint
 {
-    class MessageConsumer: IConsumer<Message>
+    internal class MessageConsumer : IConsumer<Message>
     {
         public Task Consume(ConsumeContext<Message> context)
         {

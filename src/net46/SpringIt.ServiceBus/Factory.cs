@@ -8,12 +8,13 @@ namespace SpringIt.ServiceBus
     public class Factory : IFactory
     {
         private readonly Func<IQueueHelper> _queueHelperFactory;
-        private IBusFactorySelector BusFactory => Bus.Factory;
 
         public Factory(Func<IQueueHelper> queueHelperFactory)
         {
             _queueHelperFactory = queueHelperFactory;
         }
+
+        private IBusFactorySelector BusFactory => Bus.Factory;
 
         public IBusControl CreateRabbitMqBus()
         {
@@ -30,7 +31,8 @@ namespace SpringIt.ServiceBus
             return CreateRabbitMqBus(configurator => { }, configureEndpoint);
         }
 
-        public IBusControl CreateRabbitMqBus(Action<IRabbitMqBusFactoryConfigurator> busFactoryConfigurator, Action<IRabbitMqReceiveEndpointConfigurator> receiveEndpointConfigurator)
+        public IBusControl CreateRabbitMqBus(Action<IRabbitMqBusFactoryConfigurator> busFactoryConfigurator,
+            Action<IRabbitMqReceiveEndpointConfigurator> receiveEndpointConfigurator)
         {
             if (busFactoryConfigurator == null) throw new ArgumentNullException();
 
@@ -65,7 +67,8 @@ namespace SpringIt.ServiceBus
             return CreateInMemoryBus(configurator => { }, configureEndpoint);
         }
 
-        public IBusControl CreateInMemoryBus(Action<IInMemoryBusFactoryConfigurator> configureBus, Action<IInMemoryReceiveEndpointConfigurator> configureEndpoint)
+        public IBusControl CreateInMemoryBus(Action<IInMemoryBusFactoryConfigurator> configureBus,
+            Action<IInMemoryReceiveEndpointConfigurator> configureEndpoint)
         {
             return BusFactory.CreateUsingInMemory(configurator =>
             {

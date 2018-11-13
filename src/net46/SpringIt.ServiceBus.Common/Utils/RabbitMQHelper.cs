@@ -5,18 +5,16 @@ namespace SpringIt.ServiceBus.Common.Utils
 {
     public class RabbitMqHelper : IQueueHelper
     {
-        private readonly IConfigReader _settings;
-
-        private readonly Lazy<string> _host;
-        private readonly Lazy<string> _endpoint;
-        private readonly Lazy<string> _username;
-        private readonly Lazy<string> _password;
-
-
         private const string UsernameKey = "masstransit.rabbitmq.username";
         private const string PasswordKey = "masstransit.rabbitmq.password";
         private const string HostKey = "masstransit.rabbitmq.host";
         private const string EndpointKey = "masstransit.rabbitmq.endpoint";
+        private readonly Lazy<string> _endpoint;
+
+        private readonly Lazy<string> _host;
+        private readonly Lazy<string> _password;
+        private readonly IConfigReader _settings;
+        private readonly Lazy<string> _username;
 
 
         public RabbitMqHelper(IConfigReader settings)
@@ -42,16 +40,10 @@ namespace SpringIt.ServiceBus.Common.Utils
             }
         }
 
-        public string Endpoint
-        {
-            get { return _endpoint.Value; }
-        }
+        public string Endpoint => _endpoint.Value;
 
-        public string Username
-        {
-            get { return _username.Value; }
-        }
+        public string Username => _username.Value;
 
-        public string Password { get { return _password.Value; } }
+        public string Password => _password.Value;
     }
 }

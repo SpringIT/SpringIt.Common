@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using Common.Logging;
 using MassTransit;
-using MassTransit.Pipeline;
 
 namespace SpringIt.ServiceBus.Common
 {
@@ -10,44 +9,20 @@ namespace SpringIt.ServiceBus.Common
     {
         private readonly ILog _log = LogManager.GetLogger<ServiceBusObserver>();
 
-        public Task PreReceive(ReceiveContext context)
+        public Task PreConsume<T>(ConsumeContext<T> context) where T : class
         {
-            return Task.Factory.StartNew(() => _log.TraceFormat("PreReceive: {0}", context.ContentType));
+            return Task.Factory.StartNew(() => _log.TraceFormat("PreConsume: {0}", context.Message.GetType()));
         }
 
-        public Task PostReceive(ReceiveContext context)
+        public Task PostConsume<T>(ConsumeContext<T> context) where T : class
         {
-            return Task.Factory.StartNew(() => _log.TraceFormat("PostReceive: {0}", context.ContentType));
+            return Task.Factory.StartNew(() => _log.TraceFormat("PostConsume: {0}", context.Message.GetType()));
         }
 
-        public Task PostConsume<T>(ConsumeContext<T> context, TimeSpan duration, string consumerType) where T : class
+        public Task ConsumeFault<T>(ConsumeContext<T> context, Exception exception) where T : class
         {
-            return Task.Factory.StartNew(() =>_log.TraceFormat("[{0}]Consumed message from {1}", consumerType, context.SourceAddress));
-        }
-
-        public Task ConsumeFault<T>(ConsumeContext<T> context, TimeSpan duration, string consumerType, Exception exception) where T : class
-        {
-            return Task.Factory.StartNew(() => _log.FatalFormat("[{0}]ConsumeFault: Unable to process message", exception, consumerType));
-        }
-
-        public Task ReceiveFault(ReceiveContext context, Exception exception)
-        {
-            return Task.Factory.StartNew(() => _log.FatalFormat("[{0}]ReceiveContext: Unable to process", exception, context.ContentType));
-        }
-
-        public Task PreSend<T>(SendContext<T> context) where T : class
-        {
-            return Task.Factory.StartNew(() => _log.TraceFormat("PreSend: {0}", context.Message.GetType()));
-        }
-
-        public Task PostSend<T>(SendContext<T> context) where T : class
-        {
-            return Task.Factory.StartNew(() => _log.TraceFormat("PostSend: {0}", context.Message.GetType()));
-        }
-
-        public Task SendFault<T>(SendContext<T> context, Exception exception) where T : class
-        {
-            return Task.Factory.StartNew(() => _log.FatalFormat("SendFault: Unable to process {0}", exception, context.ContentType));
+            return Task.Factory.StartNew(() =>
+                _log.FatalFormat("[{0}]ConsumeFault: Unable to process", exception, context.Message.GetType()));
         }
 
         public Task PrePublish<T>(PublishContext<T> context) where T : class
@@ -62,22 +37,53 @@ namespace SpringIt.ServiceBus.Common
 
         public Task PublishFault<T>(PublishContext<T> context, Exception exception) where T : class
         {
-            return Task.Factory.StartNew(() => _log.FatalFormat("[{0}]PublishFault: Unable to process", exception, context.ContentType));
+            return Task.Factory.StartNew(() =>
+                _log.FatalFormat("[{0}]PublishFault: Unable to process", exception, context.ContentType));
         }
 
-        public Task PreConsume<T>(ConsumeContext<T> context) where T : class
+        public Task PreReceive(ReceiveContext context)
         {
-            return Task.Factory.StartNew(() => _log.TraceFormat("PreConsume: {0}", context.Message.GetType()));
+            return Task.Factory.StartNew(() => _log.TraceFormat("PreReceive: {0}", context.ContentType));
         }
 
-        public Task PostConsume<T>(ConsumeContext<T> context) where T : class
+        public Task PostReceive(ReceiveContext context)
         {
-            return Task.Factory.StartNew(() => _log.TraceFormat("PostConsume: {0}", context.Message.GetType()));
+            return Task.Factory.StartNew(() => _log.TraceFormat("PostReceive: {0}", context.ContentType));
         }
 
-        public Task ConsumeFault<T>(ConsumeContext<T> context, Exception exception) where T : class
+        public Task PostConsume<T>(ConsumeContext<T> context, TimeSpan duration, string consumerType) where T : class
         {
-            return Task.Factory.StartNew(() => _log.FatalFormat("[{0}]ConsumeFault: Unable to process", exception, context.Message.GetType()));
+            return Task.Factory.StartNew(() =>
+                _log.TraceFormat("[{0}]Consumed message from {1}", consumerType, context.SourceAddress));
+        }
+
+        public Task ConsumeFault<T>(ConsumeContext<T> context, TimeSpan duration, string consumerType,
+            Exception exception) where T : class
+        {
+            return Task.Factory.StartNew(() =>
+                _log.FatalFormat("[{0}]ConsumeFault: Unable to process message", exception, consumerType));
+        }
+
+        public Task ReceiveFault(ReceiveContext context, Exception exception)
+        {
+            return Task.Factory.StartNew(() =>
+                _log.FatalFormat("[{0}]ReceiveContext: Unable to process", exception, context.ContentType));
+        }
+
+        public Task PreSend<T>(SendContext<T> context) where T : class
+        {
+            return Task.Factory.StartNew(() => _log.TraceFormat("PreSend: {0}", context.Message.GetType()));
+        }
+
+        public Task PostSend<T>(SendContext<T> context) where T : class
+        {
+            return Task.Factory.StartNew(() => _log.TraceFormat("PostSend: {0}", context.Message.GetType()));
+        }
+
+        public Task SendFault<T>(SendContext<T> context, Exception exception) where T : class
+        {
+            return Task.Factory.StartNew(() =>
+                _log.FatalFormat("SendFault: Unable to process {0}", exception, context.ContentType));
         }
     }
 }

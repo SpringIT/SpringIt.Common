@@ -9,7 +9,10 @@ namespace SpringIt.ServiceBus.SimpleInjector.Endpoint
 {
     public static class CompositionRoot
     {
-        private static readonly Lazy<Container> Container = new Lazy<Container>(() => new Container(), LazyThreadSafetyMode.ExecutionAndPublication);
+        private static readonly Lazy<Container> Container =
+            new Lazy<Container>(() => new Container(), LazyThreadSafetyMode.ExecutionAndPublication);
+
+        public static Container With => Container.Value;
 
         public static Container Configure(this Container container)
         {
@@ -22,7 +25,5 @@ namespace SpringIt.ServiceBus.SimpleInjector.Endpoint
 
             return container;
         }
-
-        public static Container With => Container.Value;
     }
 }

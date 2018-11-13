@@ -8,7 +8,8 @@ namespace SpringIt.ServiceBus
 {
     public static class TopselfExtension
     {
-        public static EndpointConfigurator RunTopshelf<TService>(this EndpointConfigurator configurator, Action<HostConfigurator> configureCallback, Func<TService> serviceFactory) where TService : class, IService
+        public static EndpointConfigurator RunTopshelf<TService>(this EndpointConfigurator configurator,
+            Action<HostConfigurator> configureCallback, Func<TService> serviceFactory) where TService : class, IService
         {
             HostFactory.Run(c =>
             {
@@ -31,7 +32,7 @@ namespace SpringIt.ServiceBus
                 c.Service<TService>(s =>
                 {
                     s.ConstructUsing(serviceFactory);
-                   
+
                     s.WhenStarted(service =>
                     {
                         var logger = LogManager.GetLogger(service.GetType());
@@ -47,17 +48,14 @@ namespace SpringIt.ServiceBus
                         service.Stop().Wait();
                         logger.InfoFormat("[TOPSHELF] Stopped {0}", serviceName);
                     });
-
-                    
                 });
 
                 c.OnException(exception =>
                 {
                     var logger = LogManager.GetLogger("default");
-                    logger.FatalFormat("d",exception);
+                    logger.FatalFormat("d", exception);
                 });
             });
-
 
 
             return configurator;

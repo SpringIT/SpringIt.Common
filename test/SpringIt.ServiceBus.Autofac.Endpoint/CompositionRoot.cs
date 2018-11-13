@@ -8,7 +8,10 @@ namespace SpringIt.ServiceBus.Autofac.Endpoint
 {
     public static class CompositionRoot
     {
-        private static readonly Lazy<ContainerBuilder> Container = new Lazy<ContainerBuilder>(() => new ContainerBuilder(), LazyThreadSafetyMode.ExecutionAndPublication);
+        private static readonly Lazy<ContainerBuilder> Container =
+            new Lazy<ContainerBuilder>(() => new ContainerBuilder(), LazyThreadSafetyMode.ExecutionAndPublication);
+
+        public static ContainerBuilder With => Container.Value;
 
 
         public static IContainer Configure(this ContainerBuilder container)
@@ -30,7 +33,5 @@ namespace SpringIt.ServiceBus.Autofac.Endpoint
 
             return containerBuilder.Build();
         }
-
-        public static ContainerBuilder With => Container.Value;
     }
 }
