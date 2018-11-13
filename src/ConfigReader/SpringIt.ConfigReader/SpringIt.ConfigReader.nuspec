@@ -15,7 +15,7 @@
 		<tags>ConfigReader</tags>
 	</metadata>
 	<files>
-		<file src="bin\$configuration$\SpringIt.ConfigReader.dll" target="lib" />
-		<file src="bin\$configuration$\SpringIt.ConfigReader.pdb" target="lib" />
+		<file src="bin\$configuration$\SpringIt.ConfigReader.dll" target="lib\net46" />
+		<file src="bin\$configuration$\SpringIt.ConfigReader.pdb" target="lib\net46" />
 	</files>
 </package>

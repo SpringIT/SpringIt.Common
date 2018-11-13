@@ -19,7 +19,7 @@
 	</dependencies>
   </metadata>
   <files>
-	<file src="bin\$configuration$\SpringIt.ServiceBus.Common.dll" target="lib" />
-	<file src="bin\$configuration$\SpringIt.ServiceBus.Common.pdb" target="lib" />
+	<file src="bin\$configuration$\SpringIt.ServiceBus.Common.dll" target="lib\net46" />
+	<file src="bin\$configuration$\SpringIt.ServiceBus.Common.pdb" target="lib\net46" />
   </files>
 </package>

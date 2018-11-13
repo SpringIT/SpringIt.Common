@@ -3,7 +3,7 @@
 	<metadata>
 		<id>SpringIt.ServiceBus</id>
 		<title>SpringIt.ServiceBus</title>
-		<description>Spring IT Service bus implementation</description>
+		<description>Quickly setup a masstransit endpoint</description>
 		<version>$version$</version>
 		<authors>Spring IT Solutions B.V.</authors>
 		<owners>Spring IT Solutions B.V.</owners>
@@ -27,7 +27,7 @@
 		</dependencies>
 	</metadata>
 	<files>
-		<file src="bin\$configuration$\SpringIt.ServiceBus.dll" target="lib" />
-		<file src="bin\$configuration$\SpringIt.ServiceBus.pdb" target="lib" />
+		<file src="bin\$configuration$\SpringIt.ServiceBus.dll" target="lib\net46" />
+		<file src="bin\$configuration$\SpringIt.ServiceBus.pdb" target="lib\net46" />
 	</files>
 </package>
