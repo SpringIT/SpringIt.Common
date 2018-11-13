@@ -95,17 +95,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ServiceBus\SpringIt.ServiceBus.Common\SpringIt.ServiceBus.Common.csproj">
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\net46\SpringIt.ServiceBus.Common\SpringIt.ServiceBus.Common.csproj">
       <Project>{DB588BB9-9620-449A-B9CE-45316640EDDB}</Project>
       <Name>SpringIt.ServiceBus.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\ServiceBus\SpringIt.ServiceBus\SpringIt.ServiceBus.csproj">
-      <Project>{1AADC2A8-E359-43E7-B5EA-454F3672B02A}</Project>
-      <Name>SpringIt.ServiceBus</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Autofac;
-using SpringIt.ConfigReader;
+using SpringIt.Config;
 using SpringIt.ServiceBus.Common.Utils;
 
 namespace SpringIt.ServiceBus.Autofac.Endpoint
@@ -23,7 +23,7 @@ namespace SpringIt.ServiceBus.Autofac.Endpoint
                 .As<IFactory>()
                 .SingleInstance();
             containerBuilder.RegisterType<Service>().As<IService>().SingleInstance();
-            containerBuilder.RegisterType<ConfigReader.ConfigReader>().As<IConfigReader>();
+            containerBuilder.RegisterType<ConfigReader>().As<IConfigReader>();
             containerBuilder.RegisterType<RabbitMqHelper>().As<IQueueHelper>();
 
             containerBuilder.RegisterType<MessageConsumer>().AsSelf();

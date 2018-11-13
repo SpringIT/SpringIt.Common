@@ -82,19 +82,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SpringIt.ServiceBus.Common\SpringIt.ServiceBus.Common.csproj">
-      <Project>{db588bb9-9620-449a-b9ce-45316640eddb}</Project>
-      <Name>SpringIt.ServiceBus.Common</Name>
-    </ProjectReference>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="SpringIt.ServiceBus.SimpleInjector.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SpringIt.ServiceBus\SpringIt.ServiceBus.csproj">
       <Project>{1AADC2A8-E359-43E7-B5EA-454F3672B02A}</Project>
       <Name>SpringIt.ServiceBus</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-    <None Include="SpringIt.ServiceBus.SimpleInjector.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

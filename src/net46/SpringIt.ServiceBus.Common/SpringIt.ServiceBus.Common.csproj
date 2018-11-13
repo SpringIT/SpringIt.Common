@@ -93,9 +93,9 @@
     <None Include="SpringIt.ServiceBus.Common.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ConfigReader\SpringIt.ConfigReader\SpringIt.ConfigReader.csproj">
+    <ProjectReference Include="..\SpringIt.Config\SpringIt.Config.csproj">
       <Project>{2907E3DF-5E79-4D07-A06A-BB9F221674BA}</Project>
-      <Name>SpringIt.ConfigReader</Name>
+      <Name>SpringIt.Config</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

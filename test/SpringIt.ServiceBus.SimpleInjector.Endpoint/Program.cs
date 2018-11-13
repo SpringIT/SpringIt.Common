@@ -1,5 +1,4 @@
 ﻿using MassTransit;
-using MassTransit.SimpleInjectorIntegration;
 using SimpleInjector;
 
 namespace SpringIt.ServiceBus.SimpleInjector.Endpoint

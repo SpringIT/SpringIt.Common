@@ -7,8 +7,8 @@
     <ProjectGuid>{2907E3DF-5E79-4D07-A06A-BB9F221674BA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SpringIt.ConfigReader</RootNamespace>
-    <AssemblyName>SpringIt.ConfigReader</AssemblyName>
+    <RootNamespace>SpringIt.Config</RootNamespace>
+    <AssemblyName>SpringIt.Config</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

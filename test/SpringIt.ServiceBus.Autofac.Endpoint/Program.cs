@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using MassTransit;
-
 namespace SpringIt.ServiceBus.Autofac.Endpoint
 {
     class Program

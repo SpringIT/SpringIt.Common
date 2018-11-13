@@ -1,5 +1,5 @@
 using System;
-using SpringIt.ConfigReader;
+using SpringIt.Config;
 
 namespace SpringIt.ServiceBus.Common.Utils
 {

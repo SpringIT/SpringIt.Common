@@ -3,7 +3,7 @@ using MassTransit;
 using SimpleInjector;
 using Topshelf.SimpleInjector;
 
-namespace SpringIt.ServiceBus.SimpleInjector
+namespace SpringIt.ServiceBus
 {
     public static class SimpleInjectorEndpointConfigurator
     {

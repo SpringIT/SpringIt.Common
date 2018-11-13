@@ -114,20 +114,20 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ConfigReader\SpringIt.ConfigReader\SpringIt.ConfigReader.csproj">
+    <ProjectReference Include="..\..\src\net46\SpringIt.Config\SpringIt.Config.csproj">
       <Project>{2907e3df-5e79-4d07-a06a-bb9f221674ba}</Project>
-      <Name>SpringIt.ConfigReader</Name>
+      <Name>SpringIt.Config</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\ServiceBus\SpringIt.ServiceBus.Autofac\SpringIt.ServiceBus.Autofac.csproj">
+    <ProjectReference Include="..\..\src\net46\SpringIt.ServiceBus.Autofac\SpringIt.ServiceBus.Autofac.csproj">
       <Project>{23c90147-bb80-4528-b255-a771dbcf8a68}</Project>
       <Name>SpringIt.ServiceBus.Autofac</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\ServiceBus\SpringIt.ServiceBus.Common\SpringIt.ServiceBus.Common.csproj">
+    <ProjectReference Include="..\..\src\net46\SpringIt.ServiceBus.Common\SpringIt.ServiceBus.Common.csproj">
       <Project>{db588bb9-9620-449a-b9ce-45316640eddb}</Project>
       <Name>SpringIt.ServiceBus.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\ServiceBus\SpringIt.ServiceBus\SpringIt.ServiceBus.csproj">
-      <Project>{1aadc2a8-e359-43e7-b5ea-454f3672b02a}</Project>
+    <ProjectReference Include="..\..\src\net46\SpringIt.ServiceBus\SpringIt.ServiceBus.csproj">
+      <Project>{1AADC2A8-E359-43E7-B5EA-454F3672B02A}</Project>
       <Name>SpringIt.ServiceBus</Name>
     </ProjectReference>
   </ItemGroup>

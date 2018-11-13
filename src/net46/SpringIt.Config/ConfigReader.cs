@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Configuration;
 
-namespace SpringIt.ConfigReader
+namespace SpringIt.Config
 {
     public class ConfigReader : IConfigReader
     {

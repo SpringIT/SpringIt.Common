@@ -1,4 +1,4 @@
-namespace SpringIt.ConfigReader
+namespace SpringIt.Config
 {
     public interface IConfigReader
     {
