@@ -8,8 +8,8 @@
     <ProjectGuid>{89B7FA76-87FF-4BFC-8618-5446BFAEF61A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SpringIt.ServiceBus.Test</RootNamespace>
-    <AssemblyName>SpringIt.ServiceBus.Test</AssemblyName>
+    <RootNamespace>SpringIt.ServiceBus.Tests</RootNamespace>
+    <AssemblyName>SpringIt.ServiceBus.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
