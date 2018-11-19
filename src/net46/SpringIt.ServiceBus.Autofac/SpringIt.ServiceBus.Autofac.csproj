@@ -90,9 +90,9 @@
       <Project>{DB588BB9-9620-449A-B9CE-45316640EDDB}</Project>
       <Name>SpringIt.ServiceBus.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SpringIt.ServiceBus\SpringIt.ServiceBus.csproj">
+    <ProjectReference Include="..\SpringIt.ServiceBus\SpringIt.ServiceBus2.csproj">
       <Project>{1AADC2A8-E359-43E7-B5EA-454F3672B02A}</Project>
-      <Name>SpringIt.ServiceBus</Name>
+      <Name>SpringIt.ServiceBus2</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

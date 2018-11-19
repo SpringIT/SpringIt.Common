@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SpringIt.ServiceBus.Autofac.Endpoint</RootNamespace>
     <AssemblyName>SpringIt.ServiceBus.Autofac.Endpoint</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -69,6 +70,16 @@
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NLog.4.5.11\lib\net45\NLog.dll</HintPath>
     </Reference>
+    <Reference Include="SpringIt.Config, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\src\net46\SpringIt.Config\bin\Debug\SpringIt.Config.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringIt.ServiceBus">
+      <HintPath>..\..\src\net46\SpringIt.ServiceBus.Autofac\bin\Debug\SpringIt.ServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="SpringIt.ServiceBus.Common">
+      <HintPath>..\..\src\net46\SpringIt.ServiceBus.Autofac\bin\Debug\SpringIt.ServiceBus.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
@@ -114,21 +125,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\net46\SpringIt.Config\SpringIt.Config.csproj">
-      <Project>{2907e3df-5e79-4d07-a06a-bb9f221674ba}</Project>
-      <Name>SpringIt.Config</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\net46\SpringIt.ServiceBus.Autofac\SpringIt.ServiceBus.Autofac.csproj">
       <Project>{23c90147-bb80-4528-b255-a771dbcf8a68}</Project>
       <Name>SpringIt.ServiceBus.Autofac</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\net46\SpringIt.ServiceBus.Common\SpringIt.ServiceBus.Common.csproj">
-      <Project>{db588bb9-9620-449a-b9ce-45316640eddb}</Project>
-      <Name>SpringIt.ServiceBus.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\net46\SpringIt.ServiceBus\SpringIt.ServiceBus.csproj">
-      <Project>{1AADC2A8-E359-43E7-B5EA-454F3672B02A}</Project>
-      <Name>SpringIt.ServiceBus</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
