@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>SpringIt.ServiceBus</id>
+    <title>SpringIt.ServiceBus</title>
+    <description>Quickly setup a masstransit endpoint</description>
+    <version>$version$</version>
+    <authors>Spring IT Solutions B.V.</authors>
+    <owners>Spring IT Solutions B.V.</owners>
+    <licenseUrl>http://www.spring-it.nl</licenseUrl>
+    <projectUrl>http://www.spring-it.nl</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>-</releaseNotes>
+    <copyright></copyright>
+    <tags>MassTransit, Topshelf, RabbitMQ, ServiceBus</tags>
+    <dependencies>
+      <dependency id="SpringIt.ServiceBus.Common" version="$version$" />
+      <dependency id="MassTransit" version="5.1.5" />
+      <dependency id="MassTransit.RabbitMQ" version="5.1.5" />
+      <dependency id="MassTransit.Extensions.Logging" version="5.1.5" />
+      <dependency id="Topshelf" version="4.1.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\netstandard2.0\SpringIt.ServiceBus.dll" target="lib\netstandard2.0" />
+    <file src="bin\$configuration$\netstandard2.0\SpringIt.ServiceBus.pdb" target="lib\netstandard2.0" />
+  </files>
+</package>

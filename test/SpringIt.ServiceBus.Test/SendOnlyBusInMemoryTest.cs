@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using MassTransit;
 using MassTransit.Util;
-using Moq;
 using NUnit.Framework;
-using SpringIt.ServiceBus.Common;
 using SpringIt.ServiceBus.Common.Utils;
 
 namespace SpringIt.ServiceBus.Test
@@ -18,22 +11,6 @@ namespace SpringIt.ServiceBus.Test
     [TestFixture]
     public class SendOnlyBusInMemoryTest
     {
-        private bool _messageProcessed = false;
-        private IBusControl _busControl;
-        private QH _queueHelper;
-
-        private class Blup
-        {
-        }
-
-        private class QH : IQueueHelper
-        {
-            public Uri Host => new Uri($"loopback://localhost/{Endpoint}");
-
-            public string Endpoint => "NEMO";
-            public string Username { get; }
-            public string Password { get; }
-        }
         [SetUp]
         public void Setup()
         {
@@ -50,7 +27,23 @@ namespace SpringIt.ServiceBus.Test
                     });
                 });
             });
-         
+        }
+
+        private bool _messageProcessed;
+        private IBusControl _busControl;
+        private QH _queueHelper;
+
+        private class Blup
+        {
+        }
+
+        private class QH : IQueueHelper
+        {
+            public Uri Host => new Uri($"loopback://localhost/{Endpoint}");
+
+            public string Endpoint => "NEMO";
+            public string Username { get; }
+            public string Password { get; }
         }
 
         [Test]
@@ -60,7 +53,7 @@ namespace SpringIt.ServiceBus.Test
 
             var endpoint = await _busControl.GetSendEndpoint(_queueHelper.Host);
 
-            await endpoint.Send(new Blup {});
+            await endpoint.Send(new Blup());
 
             await Task.Delay(TimeSpan.FromSeconds(1));
 
@@ -69,6 +62,4 @@ namespace SpringIt.ServiceBus.Test
             await handle.StopAsync();
         }
     }
-
-   
 }
