@@ -15,20 +15,15 @@
     <copyright></copyright>
     <tags>MassTransit, Topshelf, RabbitMQ, ServiceBus</tags>
     <dependencies>
-      <dependency id="SpringIt.ConfigReader" version="$version$" />
       <dependency id="SpringIt.ServiceBus.Common" version="$version$" />
-      <dependency id="Common.Logging" version="3.3.1" />
-      <dependency id="Common.Logging.NLog41" version="3.3.1" />
-      <dependency id="MassTransit" version="3.0.16" />
-      <dependency id="MassTransit.RabbitMQ" version="3.0.16" />
-      <dependency id="RabbitMQ.Client" version="3.5.6" />
-      <dependency id="NLog" version="4.1.2" />
-      <dependency id="Topshelf" version="4.0.1" />
-      <dependency id="Topshelf.NLog" version="4.0.1" />
+	  <dependency id="MassTransit" version="5.1.5" />
+	  <dependency id="MassTransit.RabbitMQ" version="5.1.5" />
+	  <dependency id="MassTransit.Extensions.Logging" version="5.1.5" />
+      <dependency id="Topshelf" version="4.1.0" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\$configuration$\SpringIt.ServiceBus.dll" target="lib\net46" />
-    <file src="bin\$configuration$\SpringIt.ServiceBus.pdb" target="lib\net46" />
+    <file src="bin\$configuration$\netstandard2.0\SpringIt.ServiceBus.dll" target="lib\net46" />
+    <file src="bin\$configuration$\netstandard2.0\SpringIt.ServiceBus.pdb" target="lib\net46" />
   </files>
 </package>
