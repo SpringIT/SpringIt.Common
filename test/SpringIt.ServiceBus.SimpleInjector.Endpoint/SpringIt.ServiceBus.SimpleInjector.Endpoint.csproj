@@ -110,9 +110,6 @@
       <HintPath>..\..\packages\SimpleInjector.Extensions.ExecutionContextScoping.3.1.1\lib\net45\SimpleInjector.Extensions.ExecutionContextScoping.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SpringIt.Config">
-      <HintPath>..\..\src\net46\SpringIt.ServiceBus.Autofac\bin\Debug\SpringIt.Config.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -164,6 +161,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\netstandard\SpringIt.Config\SpringIt.Config.csproj">
+      <Project>{0b478503-d28a-4b1f-9379-77c317530a0c}</Project>
+      <Name>SpringIt.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\netstandard\SpringIt.ServiceBus.Common\SpringIt.ServiceBus.Common.csproj">
       <Project>{9cf79945-8472-4dfc-8976-0ebb5028a9b4}</Project>
       <Name>SpringIt.ServiceBus.Common</Name>
