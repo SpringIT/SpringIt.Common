@@ -2,8 +2,8 @@
 
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>SpringIt.ConfigReader</id>
-    <title>SpringIt.ConfigReader</title>
+    <id>SpringIt.Config</id>
+    <title>SpringIt.Config</title>
     <description>Spring IT Config reader</description>
     <version>$version$</version>
     <authors>Spring IT Solutions B.V.</authors>
