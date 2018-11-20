@@ -26,13 +26,25 @@ namespace SpringIt.ServiceBus
             return CreateRabbitMqBus(busFactoryConfigurator, configurator => { });
         }
 
-        public IBusControl CreateRabbitMqBus(Action<IRabbitMqReceiveEndpointConfigurator> configureEndpoint)
+        public IBusControl CreateRabbitMqBus(Action<IRabbitMqReceiveEndpointConfigurator> receiveEndpointConfigurator)
         {
-            return CreateRabbitMqBus(configurator => { }, configureEndpoint);
+            return CreateRabbitMqBus(configurator => { }, receiveEndpointConfigurator);
         }
 
         public IBusControl CreateRabbitMqBus(Action<IRabbitMqBusFactoryConfigurator> busFactoryConfigurator,
             Action<IRabbitMqReceiveEndpointConfigurator> receiveEndpointConfigurator)
+        {
+            if (busFactoryConfigurator == null) throw new ArgumentNullException(nameof(busFactoryConfigurator));
+            if (receiveEndpointConfigurator == null) throw new ArgumentNullException(nameof(receiveEndpointConfigurator));
+
+            return CreateRabbitMqBus((configurator, host, queueHelper) =>
+            {
+                busFactoryConfigurator.Invoke(configurator);
+                configurator.ReceiveEndpoint(host, queueHelper.Endpoint, receiveEndpointConfigurator.Invoke);
+            });
+        }
+
+        public IBusControl CreateRabbitMqBus(Action<IRabbitMqBusFactoryConfigurator,IRabbitMqHost, IQueueHelper> busFactoryConfigurator)
         {
             if (busFactoryConfigurator == null) throw new ArgumentNullException();
 
@@ -46,37 +58,47 @@ namespace SpringIt.ServiceBus
                     h.Password(queueHelper.Password);
                 });
 
-                configurator.ReceiveEndpoint(host, queueHelper.Endpoint, receiveEndpointConfigurator.Invoke);
-
-                busFactoryConfigurator.Invoke(configurator);
+                busFactoryConfigurator.Invoke(configurator, host, queueHelper);
             });
         }
+
 
         public IBusControl CreateInMemoryBus()
         {
             return CreateInMemoryBus(configurator => { }, configurator => { });
         }
 
-        public IBusControl CreateInMemoryBus(Action<IInMemoryBusFactoryConfigurator> configureBus)
+        public IBusControl CreateInMemoryBus(Action<IInMemoryBusFactoryConfigurator> busFactoryConfigurator)
         {
-            return CreateInMemoryBus(configureBus, configurator => { });
+            return CreateInMemoryBus(busFactoryConfigurator, configurator => { });
         }
 
-        public IBusControl CreateInMemoryBus(Action<IInMemoryReceiveEndpointConfigurator> configureEndpoint)
+        public IBusControl CreateInMemoryBus(Action<IInMemoryReceiveEndpointConfigurator> receiveEndpointConfigurator)
         {
-            return CreateInMemoryBus(configurator => { }, configureEndpoint);
+            return CreateInMemoryBus(configurator => { }, receiveEndpointConfigurator);
         }
 
-        public IBusControl CreateInMemoryBus(Action<IInMemoryBusFactoryConfigurator> configureBus,
-            Action<IInMemoryReceiveEndpointConfigurator> configureEndpoint)
+        public IBusControl CreateInMemoryBus(Action<IInMemoryBusFactoryConfigurator> busFactoryConfigurator,
+            Action<IInMemoryReceiveEndpointConfigurator> receiveEndpointConfigurator)
         {
+            if (busFactoryConfigurator == null) throw new ArgumentNullException(nameof(busFactoryConfigurator));
+            if (receiveEndpointConfigurator == null) throw new ArgumentNullException(nameof(receiveEndpointConfigurator));
+
+            return CreateInMemoryBus((configurator, queueHelper) =>
+            {
+                configurator.ReceiveEndpoint(queueHelper.Endpoint, receiveEndpointConfigurator.Invoke);
+            });
+        }
+
+        public IBusControl CreateInMemoryBus(Action<IInMemoryBusFactoryConfigurator, IQueueHelper> busFactoryConfigurator)
+        {
+            if (busFactoryConfigurator == null) throw new ArgumentNullException();
+
             return BusFactory.CreateUsingInMemory(configurator =>
             {
                 var queueHelper = _queueHelperFactory();
 
-                configurator.ReceiveEndpoint(queueHelper.Endpoint, configureEndpoint.Invoke);
-
-                configureBus.Invoke(configurator);
+                busFactoryConfigurator.Invoke(configurator, queueHelper);
             });
         }
     }
