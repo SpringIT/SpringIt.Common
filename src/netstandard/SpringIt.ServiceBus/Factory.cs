@@ -86,6 +86,7 @@ namespace SpringIt.ServiceBus
 
             return CreateInMemoryBus((configurator, queueHelper) =>
             {
+                busFactoryConfigurator.Invoke(configurator);
                 configurator.ReceiveEndpoint(queueHelper.Endpoint, receiveEndpointConfigurator.Invoke);
             });
         }
