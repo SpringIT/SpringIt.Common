@@ -9,28 +9,16 @@ namespace SpringIt.ServiceBus.SimpleInjector
 {
     public class SimpleInjectorHostBuilderConfigurator : HostBuilderConfigurator
     {
-        #region Private Static Fields
 
         private static Container _container;
 
-        #endregion
-
-        #region Constructor
 
         public SimpleInjectorHostBuilderConfigurator(Container container)
         {
             _container = container ?? throw new ArgumentNullException(nameof(container));
         }
 
-        #endregion
-
-        #region Public Properties
-
         public static Container Container => _container;
-
-        #endregion
-
-        #region Public Methods
 
         public HostBuilder Configure(HostBuilder builder)
         {
@@ -41,7 +29,5 @@ namespace SpringIt.ServiceBus.SimpleInjector
         {
             yield break;
         }
-
-        #endregion
     }
 }
